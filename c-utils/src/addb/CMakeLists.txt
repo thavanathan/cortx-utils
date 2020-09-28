@@ -1,3 +1,5 @@
+include_directories("/usr/include/motr")
+
 SET(UTILS_ADDB_PLUGIN_SRCS
 	plugin.c
 )

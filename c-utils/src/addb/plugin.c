@@ -19,9 +19,9 @@
  */
 
 #include <stdio.h>
-#include "addb2/plugin_api.h"
-#include "operation.h"
-#include "perf-counters.h"
+#include <addb2/plugin_api.h>
+#include <operation.h>
+#include <perf-counters.h>
 
 /* Borrowed from addb2/dump.c, hope Motr will publish it as API in future */
 
