@@ -56,7 +56,7 @@ static void perfc_entity_states(struct m0_addb2__context *ctx, const uint64_t *v
   if (v[0] == PES_GEN_INIT)
     sprintf(buf, "%s", "init");
   if (v[0] == PES_GEN_FINI)
-    sprintf(buf, "%s", "fini");
+    sprintf(buf, "%s", "finish");
 }
 
 static void perfc_entity_attrs(struct m0_addb2__context *ctx, const uint64_t *v,
