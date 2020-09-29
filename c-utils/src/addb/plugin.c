@@ -51,7 +51,7 @@ static void bol(struct m0_addb2__context *ctx, const uint64_t *v, char *buf) {
 
 /* end of clip from dump.c */
 
-static void fsuser_state(struct m0_addb2__context *ctx, const uint64_t *v,
+static void perfc_entity_states(struct m0_addb2__context *ctx, const uint64_t *v,
                          char *buf) {
   if (v[0] == PES_GEN_INIT)
     sprintf(buf, "%s", "init");
@@ -59,8 +59,8 @@ static void fsuser_state(struct m0_addb2__context *ctx, const uint64_t *v,
     sprintf(buf, "%s", "fini");
 }
 
-static void fsuser_attribute(struct m0_addb2__context *ctx, const uint64_t *v,
-                         char *buf) {
+static void perfc_entity_attrs(struct m0_addb2__context *ctx, const uint64_t *v,
+                         	 char *buf) {
   if (v[0] == PEA_R_OFFSET)
     sprintf(buf, "%s", "read_offset");
   if (v[0] == PEA_R_IOVC)
@@ -83,9 +83,8 @@ static void fsuser_attribute(struct m0_addb2__context *ctx, const uint64_t *v,
     sprintf(buf, "%s", "write_result_minor_code");
 }
 
-static void fsuser_map(struct m0_addb2__context *ctx, const uint64_t *v,
+static void perfc_entity_maps(struct m0_addb2__context *ctx, const uint64_t *v,
                          char *buf) {
-
   if (v[0] == PEM_NFS_TO_CFS)
     sprintf(buf, "%s", "NFS_TO_CFS");
   if (v[0] == PEM_NFS_TO_DSAL)
@@ -123,26 +122,57 @@ static void fsuser_map(struct m0_addb2__context *ctx, const uint64_t *v,
 
 }
 
+static void perfc_function_tags(struct m0_addb2__context *ctx, const uint64_t *v,
+                         char *buf) {
+  if (v[0] == PFT_FSAL_WRITE)
+    sprintf(buf, "%s", "fsal_write");
+  if (v[0] == PFT_FSAL_READ)
+    sprintf(buf, "%s", "fsal_read");
+  if (v[0] == PFT_CFS_WRITE)
+    sprintf(buf, "%s", "cfs_write");
+  if (v[0] == PFT_CFS_READ)
+    sprintf(buf, "%s", "cfs_read");
+}
+
+static void perfc_entry_type(struct m0_addb2__context *ctx, const uint64_t *v,
+                         char *buf) {
+  if (v[0] == PET_STATE)
+    sprintf(buf, "%s", "state");
+  if (v[0] == PET_ATTR)
+    sprintf(buf, "%s", "attribute");
+  if (v[0] == PET_MAP)
+    sprintf(buf, "%s", "map");
+}
+
 static struct m0_addb2__id_intrp gs_curr_ids[] = {
     {
         TSDB_MK_AID(TSDB_MOD_FSUSER, 0xAB),
         "fsuser_state",
         {
-            &hex, &fsuser_state
+            &perfc_function_tags,
+			&perfc_entry_type,
+			&hex, // operation id
+			&perfc_entity_states
         }
     },
     {
         TSDB_MK_AID(TSDB_MOD_FSUSER, 0xCD),
         "fsuser_attribute",
         {
-            &hex, &fsuser_attribute
+            &perfc_function_tags,
+			&perfc_entry_type,
+			&hex, // operation id
+			&perfc_entity_attrs
         }
     },
     {
         TSDB_MK_AID(TSDB_MOD_FSUSER, 0xEF),
         "fsuser_map",
         {
-            &hex, &fsuser_map
+            &perfc_function_tags,
+			&perfc_entry_type,
+			&hex, // operation id
+			&perfc_entity_maps
         }
     },
 
