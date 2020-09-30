@@ -82,11 +82,11 @@ static void perfc_entity_attrs(struct m0_addb2__context *ctx, const uint64_t *v,
     sprintf(buf, "%s", "write_result_minor_code");
 
   if (v[0] == PEA_R_C_COUNT)
-    sprintf(buf, "%s", "read_offset");
+    sprintf(buf, "%s", "read_cfs_count");
   if (v[0] == PEA_R_C_OFFSET)
-    sprintf(buf, "%s", "read_vector_count");
+    sprintf(buf, "%s", "read_cfs_offset");
   if (v[0] == PEA_R_C_RES_RC)
-    sprintf(buf, "%s", "read_length");
+    sprintf(buf, "%s", "read_cfs_result");
 
   if (v[0] == PEA_GETATTR_RES_RC)
     sprintf(buf, "%s", "get_attribute_result");
