@@ -14,7 +14,7 @@
 # please email opensource@seagate.com or cortx-questions@seagate.com.
 
 import os
-import sys
+
 from setuptools import setup
 
 SPEC_DIR = "src/utils/ha/hac/specs/"
@@ -25,7 +25,7 @@ for root, directories, filenames in os.walk(_ROOT):
         specs.append(SPEC_DIR + filename)
 
 with open('LICENSE', 'r') as lf:
-    license = lf.read()
+    license = lf.read()  # pylint: disable=redefined-builtin
 
 with open('README.md', 'r') as rf:
     long_description = rf.read()
@@ -47,25 +47,20 @@ setup(name='cortx-py-utils',
                 'cortx.utils.ha.dm', 'cortx.utils.ha.dm.models',
                 'cortx.utils.ha.dm.repository',
                 'cortx.utils.ha',
-                'cortx.utils.message_bus','cortx.utils.message_bus.tcp',
+                'cortx.utils.message_bus', 'cortx.utils.message_bus.tcp',
                 'cortx.utils.message_bus.tcp.kafka', 'cortx.utils.product_features',
                 'cortx.utils.security', 'cortx.utils.schema',
                 ],
-      package_data={
-        'cortx': ['py.typed'],
-      },
-      entry_points={
-        'console_scripts': [
-            'hac = cortx.utils.ha.hac.hac:main'
-        ]
-      },
-      data_files = [ ('/var/lib/cortx/ha/specs', specs),
-                     ('/var/lib/cortx/ha', ['src/utils/ha/hac/args.yaml', 'src/utils/ha/hac/re_build.sh'])],
+      package_data={'cortx': ['py.typed'], },
+      entry_points={'console_scripts': ['hac = cortx.utils.ha.hac.hac:main']},
+      data_files=[('/var/lib/cortx/ha/specs', specs),
+                  ('/var/lib/cortx/ha',
+                   ['src/utils/ha/hac/args.yaml', 'src/utils/ha/hac/re_build.sh'])],
       long_description=long_description,
       zip_safe=False,
       python_requires='>=3.6.8',
       install_requires=['cryptography==2.8', 'schematics==2.1.0', 'toml==0.10.0',
                         'PyYAML==5.1.2', 'configparser==4.0.2', 'networkx==2.4',
                         'matplotlib==3.1.3', 'argparse==1.4.0',
-                        'confluent-kafka==1.5.0', 'python-crontab==2.5.1','elasticsearch==6.8.1',
-                        'elasticsearch-dsl==6.4.0','python-consul==1.1.0', 'aiohttp==3.6.1'])
+                        'confluent-kafka==1.5.0', 'python-crontab==2.5.1', 'elasticsearch==6.8.1',
+                        'elasticsearch-dsl==6.4.0', 'python-consul==1.1.0', 'aiohttp==3.6.1'])
