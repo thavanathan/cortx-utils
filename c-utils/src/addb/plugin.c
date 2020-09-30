@@ -120,7 +120,7 @@ static void perfc_entity_attrs(struct m0_addb2__context *ctx, const uint64_t *v,
   if (v[0] == PEA_KVS_GET_RES_RC)
     sprintf(buf, "%s", "kvs_get_result");
 }
-
+/*
 static void perfc_entity_maps(struct m0_addb2__context *ctx, const uint64_t *v,
                          char *buf) {
   if (v[0] == PEM_NFS_TO_CFS)
@@ -164,6 +164,7 @@ static void perfc_entity_maps(struct m0_addb2__context *ctx, const uint64_t *v,
     sprintf(buf, "%s", "DSTORE_TO_NFS");
 
 }
+*/
 
 static void perfc_function_tags(struct m0_addb2__context *ctx, const uint64_t *v,
                          char *buf) {
@@ -227,7 +228,7 @@ static struct m0_addb2__id_intrp gs_curr_ids[] = {
             &perfc_function_tags,
 			&perfc_entry_type,
 			&hex, // operation id
-			&perfc_entity_maps
+			&hex
         }
     },
 
