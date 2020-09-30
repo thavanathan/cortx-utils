@@ -72,7 +72,6 @@ static void perfc_entity_attrs(struct m0_addb2__context *ctx, const uint64_t *v,
   if (v[0] == PEA_R_RES_MIN)
     sprintf(buf, "%s", "read_result_minor_code");
 
-
   if (v[0] == PEA_W_OFFSET)
     sprintf(buf, "%s", "write_offset");
   if (v[0] == PEA_W_SIZE)
@@ -81,6 +80,45 @@ static void perfc_entity_attrs(struct m0_addb2__context *ctx, const uint64_t *v,
     sprintf(buf, "%s", "write_result_major_code");
   if (v[0] == PEA_W_RES_MIN)
     sprintf(buf, "%s", "write_result_minor_code");
+
+  if (v[0] == PEA_R_C_COUNT)
+    sprintf(buf, "%s", "read_offset");
+  if (v[0] == PEA_R_C_OFFSET)
+    sprintf(buf, "%s", "read_vector_count");
+  if (v[0] == PEA_R_C_RES_RC)
+    sprintf(buf, "%s", "read_length");
+
+  if (v[0] == PEA_GETATTR_RES_RC)
+    sprintf(buf, "%s", "get_attribute_result");
+
+  if (v[0] == PEA_ACCESS_FLAGS)
+    sprintf(buf, "%s", "access_flag");
+  if (v[0] == PEA_ACCESS_RES_RC)
+    sprintf(buf, "%s", "access_result");
+
+  if (v[0] == PEA_KVS_ALLOC_SIZE)
+    sprintf(buf, "%s", "kvs_alloc_size");
+  if (v[0] == PEA_KVS_ALLOC_RES_RC)
+    sprintf(buf, "%s", "kvs_alloc_result");
+
+  if (v[0] == PEA_DSTORE_GET_RES_RC)
+    sprintf(buf, "%s", "dstore_get_result");
+
+  if (v[0] == PEA_DSTORE_PREAD_OFFSET)
+    sprintf(buf, "%s", "dstore_pread_offset");
+  if (v[0] == PEA_DSTORE_PREAD_COUNT)
+    sprintf(buf, "%s", "dstore_pread_count");
+  if (v[0] == PEA_DSTORE_PREAD_BS)
+    sprintf(buf, "%s", "dstore_pread_bs");
+  if (v[0] == PEA_DSTORE_PREAD_RES_RC)
+    sprintf(buf, "%s", "dstore_pread_result");
+
+  if (v[0] == PEA_KVS_GET_KLEN)
+    sprintf(buf, "%s", "kvs_get_key_length");
+  if (v[0] == PEA_KVS_GET_VLEN)
+    sprintf(buf, "%s", "kvs_get_value_length");
+  if (v[0] == PEA_KVS_GET_RES_RC)
+    sprintf(buf, "%s", "kvs_get_result");
 }
 
 static void perfc_entity_maps(struct m0_addb2__context *ctx, const uint64_t *v,
@@ -120,6 +158,11 @@ static void perfc_entity_maps(struct m0_addb2__context *ctx, const uint64_t *v,
   if (v[0] == PEM_NSAL_TO_MOTR)
     sprintf(buf, "%s", "NSAL_TO_MOTR");
 
+  if (v[0] == PEM_KVS_TO_NFS)
+    sprintf(buf, "%s", "KVS_TO_NFS");
+  if (v[0] == PEM_DSTORE_TO_NFS)
+    sprintf(buf, "%s", "DSTORE_TO_NFS");
+
 }
 
 static void perfc_function_tags(struct m0_addb2__context *ctx, const uint64_t *v,
@@ -132,6 +175,18 @@ static void perfc_function_tags(struct m0_addb2__context *ctx, const uint64_t *v
     sprintf(buf, "%s", "cfs_write");
   if (v[0] == PFT_CFS_READ)
     sprintf(buf, "%s", "cfs_read");
+  if (v[0] == 	PFT_KVS_ALLOC)
+    sprintf(buf, "%s", "kvs_alloc");
+  if (v[0] == PFT_KVS_GET)
+    sprintf(buf, "%s", "kvs_get");
+  if (v[0] == PFT_CFS_GETATTR)
+    sprintf(buf, "%s", "cfs_get_attribute");
+  if (v[0] == PFT_CFS_ACCESS)
+    sprintf(buf, "%s", "cfs_access");
+  if (v[0] == PFT_DSTORE_GET)
+    sprintf(buf, "%s", "dstore_get");
+  if (v[0] == PFT_DSTORE_PREAD)
+    sprintf(buf, "%s", "dstore_pread");
 }
 
 static void perfc_entry_type(struct m0_addb2__context *ctx, const uint64_t *v,
